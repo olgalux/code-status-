@@ -1,179 +1,344 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CODE: STATUS | Ольга Молодцова</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --black: #0a0a0a;
-            --white: #ffffff;
-            --accent: #BE0000; /* Тот самый красный */
-        }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CODE: STATUS | Ольга Молодцова</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@300;400;600&display=swap"
+            rel="stylesheet"
+        />
 
-        body {
-            margin: 0;
-            background-color: var(--black);
-            color: var(--white);
-            font-family: 'Montserrat', sans-serif;
-            overflow-x: hidden;
-        }
+        <style>
+            :root {
+                --black: #0a0a0a;
+                --white: #ffffff;
+                --accent: #be0000;
+                --gray: #1a1a1a;
+                --transition: 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            }
 
-        h1, h2 {
-            font-family: 'Playfair Display', serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+            body {
+                margin: 0;
+                background-color: var(--black);
+                color: var(--white);
+                font-family: "Montserrat", sans-serif;
+                overflow-x: hidden;
+                line-height: 1.8;
+                -webkit-font-smoothing: antialiased;
+            }
 
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('IMG_1.JPG') no-repeat center center/cover;
-            text-align: center;
-        }
+            h1,
+            h2 {
+                font-family: "Playfair Display", serif;
+                text-transform: uppercase;
+                letter-spacing: 3px;
+                margin: 0;
+            }
 
-        .hero-content h1 {
-            font-size: clamp(3rem, 10vw, 6rem);
-            margin-bottom: 0;
-            animation: fadeIn 2s ease-in;
-        }
+            /* Hero Section */
+            .hero {
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background:
+                    linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                    url("https://images.unsplash.com/photo-1481326329074-8516f14f47ec?auto=format&fit=crop&q=80&w=2000")
+                        no-repeat center center/cover;
+                text-align: center;
+                position: relative;
+            }
 
-        .hero-content p {
-            font-size: 1.2rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-        }
+            .hero-content {
+                z-index: 2;
+                padding: 0 10px;
+            }
 
-        /* Manifesto Section */
-        .manifesto {
-            padding: 100px 20px;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+            .hero-content h1 {
+                font-size: clamp(2.5rem, 10vw, 7rem);
+                margin-bottom: 0px;
+                animation: fadeIn 2s ease-out;
+            }
 
-        .quote {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-style: italic;
-            border-left: 4px solid var(--accent);
-            padding-left: 20px;
-            margin: 40px 0;
-        }
+            .hero-content p {
+                font-size: clamp(0.8rem, 2.5vw, 1.2rem);
+                letter-spacing: 5px;
+                text-transform: uppercase;
+                opacity: 0.9;
+                font-weight: 300;
+            }
 
-        /* Steps Section */
-        .step {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            padding: 50px 5%;
-            min-height: 60vh;
-        }
+            /* Manifesto */
+            .manifesto {
+                padding: 140px 20px;
+                text-align: center;
+                max-width: 900px;
+                margin: 0 auto;
+            }
 
-        .step:nth-child(even) { flex-direction: row-reverse; }
+            .manifesto p {
+                font-size: 1.2rem;
+                letter-spacing: 1px;
+                opacity: 0.7;
+                padding-top: 10px; /* Reduced from a larger number */
+                padding-bottom: 10px; /* Reduced from a larger number */
+                margin-top: 0; /* Removes outside space */
+                line-height: 1.2; /* Makes the text lines closer together */
+            }
 
-        .step-img {
-            flex: 1 1 400px;
-            height: 500px;
-            background-position: center;
-            background-size: cover;
-            margin: 20px;
-            filter: grayscale(100%);
-            transition: 0.5s;
-        }
+            .quote {
+                font-family: "Playfair Display", serif;
+                font-size: clamp(1.5rem, 4vw, 2.2rem);
+                font-style: italic;
+                border-left: 3px solid var(--accent);
+                padding-left: 40px;
+                margin: 60px 0;
+                text-align: left;
+                line-height: 1.4;
+            }
 
-        .step-img:hover { filter: grayscale(0%); transform: scale(1.02); }
+            /* Steps Layout */
+            .step {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                padding: 80px 8%;
+                gap: 60px;
+                max-width: 1400px;
+                margin: 0 auto;
+            }
 
-        .step-text {
-            flex: 1 1 400px;
-            padding: 40px;
-        }
+            .step:nth-child(even) {
+                flex-direction: row-reverse;
+            }
 
-        .step-text h2 { color: var(--accent); font-size: 2rem; }
+            .step-img-container {
+                flex: 1 1 450px;
+                height: 600px;
+                overflow: hidden;
+                border: 1px solid #222;
+                position: relative;
+                filter: grayscale(100%);
+                transition: var(--transition);
+            }
 
-        /* CTA Button */
-        .cta-box {
-            padding: 100px 20px;
-            text-align: center;
-            background-color: #111;
-        }
+            .step-img-container img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 1.2s ease;
+            }
 
-        .btn {
-            display: inline-block;
-            padding: 20px 40px;
-            background-color: var(--accent);
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            letter-spacing: 2px;
-            transition: 0.3s;
-            border-radius: 50px;
-        }
+            .step:hover .step-img-container {
+                filter: grayscale(0%);
+                border-color: var(--accent);
+            }
 
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(190, 0, 0, 0.4);
-        }
+            .step:hover .step-img-container img {
+                transform: scale(1.08);
+            }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+            .step-text {
+                flex: 1 1 400px;
+            }
 
-    </style>
-</head>
-<body>
+            .step-text h2 {
+                color: var(--accent);
+                font-size: clamp(1.8rem, 3vw, 2.5rem);
+                margin-bottom: 25px;
+            }
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>CODE: STATUS</h1>
-            <p>5 микродвижений, которые делают тебя дорогой</p>
-        </div>
-    </section>
+            .step-text p {
+                font-weight: 300;
+                font-size: 1.15rem;
+                opacity: 0.8;
+                max-width: 520px;
+            }
 
-    <section class="manifesto">
-        <p>Можно купить сумку Birkin, но зайти в ней в ресторан походкой «уставшей мамы». Магия исчезает.</p>
-        <div class="quote">«Твое тело говорит раньше, чем ты открываешь рот».</div>
-        <p>Если тело зажато — ты в дефиците. Если тело свободно — ты во власти.</p>
-    </section>
+            /* CTA Section */
+            .cta-box {
+                padding: 150px 20px;
+                text-align: center;
+                background-color: #050505;
+                border-top: 1px solid #1a1a1a;
+            }
 
-    <div class="step">
-        <div class="step-img" style="background-image: url('ВАШЕ_ФОТО_ПОРТРЕТ_В_ОЧКАХ.jpg');"></div>
-        <div class="step-text">
-            <h2>01. Взгляд Хозяйки</h2>
-            <p>Не прячь глаза. Когда заходишь в зал — сделай паузу 2 секунды. Спокойное сканирование пространства. Ты — главная в этой комнате.</p>
-        </div>
-    </div>
+            .cta-box h2 {
+                font-size: clamp(1.8rem, 5vw, 3rem);
+                margin-bottom: 20px;
+            }
 
-    <div class="step">
-        <div class="step-img" style="background-image: url('ВАШЕ_ФОТО_РУКИ_НА_ПОЯСЕ.jpg');"></div>
-        <div class="step-text">
-            <h2>02. Локти и Пространство</h2>
-            <p>Статусная женщина занимает место. Воздух подмышками — это признак уверенного хищника. Избавься от «позы жертвы».</p>
-        </div>
-    </div>
+            .btn {
+                display: inline-block;
+                padding: 24px 70px;
+                background-color: var(--accent);
+                color: white;
+                text-decoration: none;
+                font-weight: 600;
+                letter-spacing: 4px;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                margin-top: 50px;
+                text-transform: uppercase;
+                font-size: 0.9rem;
+            }
 
-    <div class="step">
-        <div class="step-img" style="background-image: url('ВАШЕ_ФОТО_У_СТАНКА_ИЛИ_ШАГ.jpg');"></div>
-        <div class="step-text">
-            <h2>03. Походка от Бедра</h2>
-            <p>Движение начинается от таза. Плечи на месте, бедра танцуют. Это и есть тот самый секс и магнетизм.</p>
-        </div>
-    </div>
+            .btn:hover {
+                background-color: #e60000;
+                box-shadow: 0 15px 50px rgba(190, 0, 0, 0.4);
+                transform: translateY(-8px);
+            }
 
-    <section class="cta-box">
-        <h2>Хочешь увидеть свои слепые зоны?</h2>
-        <p>Сними видео своей походки (15 сек) и пришли мне на разбор.</p>
-        <br>
-        <a href="https://t.me/@olimpiadaOlga" class="btn">ПОЛУЧИТЬ РАЗБОР В TG</a>
-    </section>
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
 
-    <footer style="text-align: center; padding: 40px; font-size: 0.8rem; opacity: 0.5;">
-        © 2026 OLGA MOLODTSOVA | KINETIC IMAGE
-    </footer>
+            footer {
+                text-align: center;
+                padding: 80px 40px;
+                font-size: 0.7rem;
+                opacity: 0.3;
+                text-transform: uppercase;
+                letter-spacing: 4px;
+            }
 
-</body>
+            @media (max-width: 992px) {
+                .step {
+                    padding: 40px 5%;
+                    gap: 30px;
+                }
+                .step-img-container {
+                    height: 450px;
+                }
+                .manifesto {
+                    padding: 80px 20px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>CODE: STATUS</h1>
+                    <p>5 микродвижений, которые меняют твой ранг</p>
+                </div>
+            </section>
+
+            <section class="manifesto">
+                <p>Можно надеть весь люкс мира, но остаться «невидимкой».</p>
+                <div class="quote">
+                    «Статус — это не то, что на тебе надето. Это то, как ты
+                    занимаешь пространство».
+                </div>
+            </section>
+
+            <section class="step">
+                <div class="step-img-container">
+                    <img
+                        src="https://cdn.jsdelivr.net/gh/nectarius/images@master/assets/hero.jpeg"
+                        alt="Взгляд через стекло"
+                    />
+                </div>
+                <div class="step-text">
+                    <h2>01. Взгляд через стекло</h2>
+                    <p>
+                        Входя в помещение, сделай паузу. Не ищи глазами
+                        знакомых. Спокойно просканируй пространство поверх
+                        голов. Это взгляд человека, который владеет этой
+                        территорией.
+                    </p>
+                </div>
+            </section>
+
+            <section class="step">
+                <div class="step-img-container">
+                    <img
+                        src="https://cdn.jsdelivr.net/gh/nectarius/images@master/assets/vglyad.jpeg"
+                        alt="Воздух влияния"
+                    />
+                </div>
+                <div class="step-text">
+                    <h2>02. Воздух влияния</h2>
+                    <p>
+                        Локти никогда не прижаты к ребрам. Чем больше места
+                        занимают твои руки, тем выше твой биологический ранг.
+                        Статусная женщина не боится быть заметной.
+                    </p>
+                </div>
+            </section>
+
+            <section class="step">
+                <div class="step-img-container">
+                    <img
+                        src="https://cdn.jsdelivr.net/gh/nectarius/images@master/assets/premium.jpeg"
+                        alt="Вертикаль власти"
+                    />
+                </div>
+                <div class="step-text">
+                    <h2>03. Вертикаль власти</h2>
+                    <p>
+                        Линия подбородка всегда параллельна полу или чуть выше.
+                        Не опускай голову в телефон — так ты мгновенно
+                        превращаешься из королевы в подчиненного.
+                    </p>
+                </div>
+            </section>
+
+            <section class="step">
+                <div class="step-img-container">
+                    <img
+                        src="https://cdn.jsdelivr.net/gh/nectarius/images@master/assets/lokti.jpeg"
+                        alt="Магия паузы"
+                    />
+                </div>
+                <div class="step-text">
+                    <h2>04. Магия паузы</h2>
+                    <p>
+                        Суета — враг денег. Между вопросом и твоим ответом
+                        должна быть пауза в 2 секунды. Ты не торопишься угодить.
+                        Ты — центр внимания.
+                    </p>
+                </div>
+            </section>
+
+            <section class="step">
+                <div class="step-img-container">
+                    <img
+                        src="https://cdn.jsdelivr.net/gh/nectarius/images@master/assets/hodba.jpeg"
+                        alt="Вектор движения"
+                    />
+                </div>
+                <div class="step-text">
+                    <h2>05. Вектор движения</h2>
+                    <p>
+                        Твоя походка начинается от бедра, а не от колена.
+                        Двигайся всем телом, транслируя свободу. Плечи остаются
+                        неподвижными — это признак высшего ранга.
+                    </p>
+                </div>
+            </section>
+
+            <section class="cta-box">
+                <h2>Твоё тело продаёт тебя или дешевит?</h2>
+                <p>
+                    Сними видео своей походки (до 15 сек) и пришли мне на аудит.
+                </p>
+                <a href="https://t.me/YOUR_TELEGRAM_NICKNAME" class="btn"
+                    >ПОЛУЧИТЬ РАЗБОР</a
+                >
+            </section>
+        </main>
+
+        <footer>© 2026 OLGA MOLODTSOVA | CODE: STATUS</footer>
+    </body>
 </html>
-
